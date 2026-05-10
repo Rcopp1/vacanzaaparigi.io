@@ -1,0 +1,374 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Lato',sans-serif;background:transparent;}
+
+.guide{max-width:680px;margin:0 auto;color:var(--color-text-primary);}
+
+.cover{background:linear-gradient(160deg,#0a1628 0%,#1a3a6e 60%,#0d2145 100%);padding:3rem 2.5rem 2.5rem;border-radius:var(--border-radius-lg);margin-bottom:2rem;position:relative;overflow:hidden;}
+.cover::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;border:1px solid rgba(212,175,55,0.25);border-radius:50%;}
+.cover::after{content:'';position:absolute;top:-20px;right:-20px;width:140px;height:140px;border:1px solid rgba(212,175,55,0.15);border-radius:50%;}
+.cover-eyebrow{font-family:'Lato',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#d4af37;margin-bottom:0.75rem;font-weight:700;}
+.cover-title{font-family:'Playfair Display',serif;font-size:2.8rem;color:#fff;line-height:1.1;margin-bottom:0.4rem;font-weight:600;}
+.cover-title em{color:#d4af37;font-style:italic;}
+.cover-sub{font-family:'Playfair Display',serif;font-size:1.1rem;color:rgba(255,255,255,0.65);font-style:italic;margin-bottom:2rem;}
+.cover-meta{display:flex;gap:2rem;}
+.cover-meta-item{font-size:12px;color:rgba(255,255,255,0.5);letter-spacing:1px;text-transform:uppercase;}
+.cover-meta-item strong{display:block;font-size:14px;color:rgba(255,255,255,0.9);letter-spacing:0;text-transform:none;font-weight:400;margin-bottom:2px;}
+
+.chapter{margin-bottom:2.5rem;}
+.chapter-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem;padding-bottom:0.75rem;border-bottom:0.5px solid var(--color-border-tertiary);}
+.chapter-num{font-family:'Playfair Display',serif;font-size:0.9rem;color:#d4af37;font-style:italic;min-width:70px;}
+.chapter-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:600;color:var(--color-text-primary);}
+
+.info-card{background:var(--color-background-secondary);border-radius:var(--border-radius-lg);padding:1.25rem 1.5rem;margin-bottom:1rem;}
+.info-row{display:flex;align-items:flex-start;gap:0.75rem;padding:0.5rem 0;border-bottom:0.5px solid var(--color-border-tertiary);}
+.info-row:last-child{border-bottom:none;padding-bottom:0;}
+.info-icon{color:#d4af37;font-size:16px;margin-top:1px;flex-shrink:0;}
+.info-label{font-size:12px;color:var(--color-text-secondary);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:2px;}
+.info-value{font-size:14px;color:var(--color-text-primary);}
+.info-link{color:#1a3a6e;text-decoration:underline;font-size:14px;font-style:italic;}
+
+.program-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0.5rem;margin-top:0.75rem;}
+.prog-day{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:0.6rem 0.5rem;text-align:center;}
+.prog-day-name{font-size:11px;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3px;}
+.prog-day-desc{font-size:12px;color:var(--color-text-primary);font-weight:500;line-height:1.3;}
+.prog-day.highlight{border-color:#d4af37;background:rgba(212,175,55,0.08);}
+.prog-day.highlight .prog-day-name{color:#a8872a;}
+
+.history-timeline{position:relative;padding-left:1.5rem;}
+.history-timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--color-border-tertiary);}
+.h-item{position:relative;margin-bottom:1.25rem;}
+.h-item::before{content:'';position:absolute;left:-1.6rem;top:4px;width:8px;height:8px;border-radius:50%;background:#d4af37;flex-shrink:0;}
+.h-year{font-size:12px;font-weight:700;color:#d4af37;letter-spacing:1px;margin-bottom:2px;}
+.h-text{font-size:14px;color:var(--color-text-secondary);line-height:1.6;}
+
+.quartiere-prose{font-size:14px;color:var(--color-text-secondary);line-height:1.8;font-style:italic;}
+.quartiere-prose strong{color:var(--color-text-primary);font-style:normal;}
+
+.activity{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem;margin-bottom:0.75rem;display:flex;gap:1rem;}
+.activity.featured{border-left:3px solid #d4af37;border-top-left-radius:0;border-bottom-left-radius:0;}
+.act-time{text-align:center;min-width:44px;flex-shrink:0;}
+.act-time-hour{font-size:15px;font-weight:600;color:#1a3a6e;font-family:'Playfair Display',serif;}
+.act-time-label{font-size:10px;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:0.5px;}
+.act-body{flex:1;min-width:0;}
+.act-name{font-size:15px;font-weight:600;color:var(--color-text-primary);margin-bottom:3px;font-family:'Playfair Display',serif;}
+.act-desc{font-size:13px;color:var(--color-text-secondary);line-height:1.5;margin-bottom:6px;}
+.act-badges{display:flex;flex-wrap:wrap;gap:5px;}
+.badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;padding:2px 8px;border-radius:20px;font-weight:500;}
+.badge-gold{background:rgba(212,175,55,0.12);color:#7a5f00;}
+.badge-blue{background:rgba(26,58,110,0.1);color:#1a3a6e;}
+.badge-green{background:var(--color-background-success);color:var(--color-text-success);}
+
+.transport-arrow{display:flex;align-items:center;gap:0.5rem;padding:0.35rem 0.5rem 0.35rem 4.5rem;font-size:12px;color:var(--color-text-tertiary);}
+.transport-arrow i{font-size:14px;color:var(--color-border-secondary);}
+
+.dinner-card{background:rgba(26,58,110,0.06);border:1px solid rgba(26,58,110,0.2);border-radius:var(--border-radius-lg);padding:1rem 1.25rem;margin-top:1rem;display:flex;gap:1rem;align-items:center;}
+.dinner-icon{font-size:22px;color:#1a3a6e;}
+.dinner-body{}
+.dinner-name{font-size:14px;font-weight:600;color:var(--color-text-primary);font-family:'Playfair Display',serif;}
+.dinner-detail{font-size:12px;color:var(--color-text-secondary);margin-top:2px;}
+</style>
+
+<div class="guide">
+
+<div class="cover">
+  <div class="cover-eyebrow">Guida di viaggio · Maggio 2026</div>
+  <div class="cover-title">Giornata<br><em>matta matta</em><br>a Parigi</div>
+  <div class="cover-sub">Un'avventura tra arte, storia e baguette</div>
+  <div class="cover-meta">
+    <div class="cover-meta-item"><strong>Pics & Roby</strong>Viaggiatori</div>
+    <div class="cover-meta-item"><strong>5 giorni</strong>Durata</div>
+    <div class="cover-meta-item"><strong>Parigi, Francia</strong>Destinazione</div>
+  </div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-header">
+    <span class="chapter-num">Cap. I</span>
+    <span class="chapter-title">Informazioni generali</span>
+  </div>
+  <div class="info-card">
+    <div class="info-row">
+      <i class="ti ti-home info-icon" aria-hidden="true"></i>
+      <div>
+        <div class="info-label">Alloggio</div>
+        <div class="info-value">66 Rue Marguerite de Rochechouart, Parigi 9°</div>
+        <a class="info-link" href="#">→ Link Airbnb (inserire qui)</a>
+      </div>
+    </div>
+    <div class="info-row">
+      <i class="ti ti-map-pin info-icon" aria-hidden="true"></i>
+      <div>
+        <div class="info-label">Mappa & indicazioni</div>
+        <a class="info-link" href="#">→ Link Google Maps (inserire qui)</a>
+      </div>
+    </div>
+    <div class="info-row">
+      <i class="ti ti-calendar info-icon" aria-hidden="true"></i>
+      <div>
+        <div class="info-label">Programma della settimana</div>
+        <div class="program-grid" style="margin-top:0.5rem;">
+          <div class="prog-day"><div class="prog-day-name">Mer</div><div class="prog-day-desc">Arrivo</div></div>
+          <div class="prog-day highlight"><div class="prog-day-name">Gio</div><div class="prog-day-desc">Turisti con Robi</div></div>
+          <div class="prog-day"><div class="prog-day-name">Ven</div><div class="prog-day-desc">Compl. Luca 🎂</div></div>
+          <div class="prog-day"><div class="prog-day-name">Sab</div><div class="prog-day-desc">In giro con gli amici</div></div>
+          <div class="prog-day"><div class="prog-day-name">Dom</div><div class="prog-day-desc">Ripartenza</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-header">
+    <span class="chapter-num">Cap. II</span>
+    <span class="chapter-title">Gli ultimi 200 anni di Parigi in pillole</span>
+  </div>
+  <div class="history-timeline">
+    <div class="h-item">
+      <div class="h-year">1804–1815</div>
+      <div class="h-text">Napoleone I incoronato imperatore a Notre-Dame. Parigi diventa capitale culturale e militare d'Europa. Arco di Trionfo commissionato nel 1806.</div>
+    </div>
+    <div class="h-item">
+      <div class="h-year">1853–1870</div>
+      <div class="h-text">Il Barone Haussmann, su incarico di Napoleone III, demolisce e rifà metà della città: nascono i grandi boulevards, il sistema fognario moderno, le piazze stellate. La Parigi che conoscete oggi è sua.</div>
+    </div>
+    <div class="h-item">
+      <div class="h-year">1889</div>
+      <div class="h-text">Inaugurata la Tour Eiffel per l'Esposizione Universale. I parigini la odiano. Poi ci si affezionano.</div>
+    </div>
+    <div class="h-item">
+      <div class="h-year">1871–1914 · Belle Époque</div>
+      <div class="h-text">Parigi è la capitale del mondo: Moulin Rouge, Impressionismo, Art Nouveau, cabarets. Monet, Degas, Toulouse-Lautrec. La vita è bella.</div>
+    </div>
+    <div class="h-item">
+      <div class="h-year">Anni '20 · Les Années Folles</div>
+      <div class="h-text">Hemingway, Fitzgerald, Picasso e Gertrude Stein si ritrovano a Saint-Germain. Jazz nei sotterranei, champagne ovunque. Parigi è la città degli espatriati americani e degli artisti bohémien.</div>
+    </div>
+    <div class="h-item">
+      <div class="h-year">1940–1944 · Occupazione</div>
+      <div class="h-text">I nazisti occupano Parigi. La città viene risparmiata dalla distruzione, a differenza di molte capitali europee. La Liberazione arriva nell'agosto 1944 tra bagni di folla sugli Champs-Élysées.</div>
+    </div>
+    <div class="h-item">
+      <div class="h-year">1968 · Maggio</div>
+      <div class="h-text">Studenti e operai paralizzano la città per settimane. Le barricate del Quartiere Latino entrano nella storia. De Gaulle vacilla ma regge.</div>
+    </div>
+    <div class="h-item">
+      <div class="h-year">1977–1989 · Grands Travaux</div>
+      <div class="h-text">Il Centre Pompidou (1977) scandalizza con le sue tubature a vista. La Piramide del Louvre di I.M. Pei (1989) divide i parigini. Entrambi diventano icone.</div>
+    </div>
+    <div class="h-item">
+      <div class="h-year">2019 · Notre-Dame</div>
+      <div class="h-text">Un incendio devasta la cattedrale. Il mondo si ferma. Cinque anni di restauro: nel 2024, Notre-Dame riapre, più splendente di prima.</div>
+    </div>
+  </div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-header">
+    <span class="chapter-num">Cap. III</span>
+    <span class="chapter-title">Il vostro quartiere</span>
+  </div>
+  <div class="info-card">
+    <p class="quartiere-prose">
+      Siete nel <strong>9° arrondissement</strong>, a due passi dal confine con Montmartre — uno dei quartieri più vivi e autentici di Parigi. La vostra strada, <strong>Rue Marguerite de Rochechouart</strong>, è un asse pedonale ricco di vita: caffè, vinerie, mercatini e negozietti indie costellano ogni isolato.
+    </p>
+    <p class="quartiere-prose" style="margin-top:0.75rem;">
+      A pochi minuti a piedi trovate la <strong>metro Anvers</strong> (linea 2), da cui in pochi stop raggiungete tutta Parigi. Alzando gli occhi a nord vedete già il <strong>Sacré-Cœur</strong> in cima alla collina. A ovest, il Pigalle con il suo leggendario <strong>Moulin Rouge</strong>. A est, i bistrot e i bar della <strong>Nouvelle Athènes</strong>, il quartiere dei pittori ottocenteschi.
+    </p>
+    <p class="quartiere-prose" style="margin-top:0.75rem;">
+      Il clima è quello di un quartiere vissuto dai parigini veri: né troppo turistico, né periferico. Perfetto per perdersi la mattina con un croissant in mano.
+    </p>
+  </div>
+</div>
+
+<div class="chapter">
+  <div class="chapter-header">
+    <span class="chapter-num">Cap. IV</span>
+    <span class="chapter-title">Giovedì — Turisti con Robi</span>
+  </div>
+
+  <div class="activity featured">
+    <div class="act-time">
+      <div class="act-time-hour">8:30</div>
+      <div class="act-time-label">Partenza</div>
+    </div>
+    <div class="act-body">
+      <div class="act-name">Partenza da casa</div>
+      <div class="act-desc">Si esce dal portone con scarpe comode e macchina fotografica carica. La giornata è lunga — colazione veloce al bar sotto casa prima di partire.</div>
+    </div>
+  </div>
+
+  <div class="transport-arrow"><i class="ti ti-arrow-down" aria-hidden="true"></i> A piedi · 20 min</div>
+
+  <div class="activity">
+    <div class="act-time">
+      <div class="act-time-hour">9:30</div>
+      <div class="act-time-label">1 ora</div>
+    </div>
+    <div class="act-body">
+      <div class="act-name">Galeries Lafayette Haussmann</div>
+      <div class="act-desc">Il grande magazzino più famoso di Parigi, fondato nel 1895. Vale la visita anche solo per la cupola Art Nouveau in vetro e ferro battuto al piano superiore — uno dei soffitti più belli della città. Shopping facoltativo.</div>
+      <div class="act-badges">
+        <span class="badge badge-blue"><i class="ti ti-building-store" aria-hidden="true"></i> Shopping</span>
+        <span class="badge badge-gold"><i class="ti ti-star" aria-hidden="true"></i> Art Nouveau</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="transport-arrow"><i class="ti ti-arrow-down" aria-hidden="true"></i> A piedi · 5 min</div>
+
+  <div class="activity">
+    <div class="act-time">
+      <div class="act-time-hour">10:00</div>
+      <div class="act-time-label">30 min</div>
+    </div>
+    <div class="act-body">
+      <div class="act-name">Palais Garnier — Opéra di Parigi</div>
+      <div class="act-desc">L'opera lirica più sontuosa del mondo, inaugurata nel 1875. Chandelier da 8 tonnellate, scalinata in marmo, soffitto dipinto da Chagall. Ispirazione per "Il Fantasma dell'Opera". L'esterno barocco merita già da solo la deviazione.</div>
+      <div class="act-badges">
+        <span class="badge badge-gold"><i class="ti ti-music" aria-hidden="true"></i> Architettura</span>
+        <span class="badge badge-blue"><i class="ti ti-eye" aria-hidden="true"></i> Solo esterno</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="transport-arrow"><i class="ti ti-arrow-down" aria-hidden="true"></i> A piedi · 16 min</div>
+
+  <div class="activity">
+    <div class="act-time">
+      <div class="act-time-hour">11:00</div>
+      <div class="act-time-label">1 ora</div>
+    </div>
+    <div class="act-body">
+      <div class="act-name">Galerie Vivienne</div>
+      <div class="act-desc">Una delle gallerie coperte ottocentesche meglio conservate di Parigi. Pavimento in mosaico, soffitto a vetrate, negozietti antiquari e il profumo di un'altra epoca. Perfetta per una passeggiata senza automobili nel cuore del 2° arrondissement.</div>
+      <div class="act-badges">
+        <span class="badge badge-gold"><i class="ti ti-photo" aria-hidden="true"></i> Foto da urlo</span>
+        <span class="badge badge-green"><i class="ti ti-free-rights" aria-hidden="true"></i> Ingresso libero</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="transport-arrow"><i class="ti ti-arrow-down" aria-hidden="true"></i> A piedi · 10 min</div>
+
+  <div class="activity">
+    <div class="act-time">
+      <div class="act-time-hour">12:00</div>
+      <div class="act-time-label">1 ora</div>
+    </div>
+    <div class="act-body">
+      <div class="act-name">Palais-Royal</div>
+      <div class="act-desc">Ex residenza reale, oggi splendido giardino pubblico circondato da portici settecenteschi con gallerie e ristoranti. Famoso per le colonne di Daniel Buren nel cortile — arte contemporanea nel cuore del classicismo. Ottimo posto per una pausa seduti sull'erba.</div>
+      <div class="act-badges">
+        <span class="badge badge-green"><i class="ti ti-trees" aria-hidden="true"></i> Giardino</span>
+        <span class="badge badge-gold"><i class="ti ti-star" aria-hidden="true"></i> Colonne Buren</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="transport-arrow"><i class="ti ti-arrow-down" aria-hidden="true"></i> A piedi · 30 min</div>
+
+  <div class="activity">
+    <div class="act-time">
+      <div class="act-time-hour">13:00</div>
+      <div class="act-time-label">1 ora</div>
+    </div>
+    <div class="act-body">
+      <div class="act-name">Dal Louvre a Sainte-Chapelle</div>
+      <div class="act-desc">Passeggiata lungo la Senna davanti al Louvre — la piramide di vetro si riflette nelle vasche, scena imperdibile. Si cammina poi verso l'Île de la Cité per raggiungere Sainte-Chapelle, la cappella gotica del 1248 con 15 metri di vetrate medievali che trasformano la luce in oro.</div>
+      <div class="act-badges">
+        <span class="badge badge-gold"><i class="ti ti-walk" aria-hidden="true"></i> Passeggiata</span>
+        <span class="badge badge-blue"><i class="ti ti-building-church" aria-hidden="true"></i> Sainte-Chapelle</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="transport-arrow"><i class="ti ti-arrow-down" aria-hidden="true"></i> A piedi · 30 min (incluso nel tragitto precedente)</div>
+
+  <div class="activity featured">
+    <div class="act-time">
+      <div class="act-time-hour">14:30</div>
+      <div class="act-time-label">1h 30min</div>
+    </div>
+    <div class="act-body">
+      <div class="act-name">Notre-Dame de Paris</div>
+      <div class="act-desc">La cattedrale gotica più celebre del mondo, appena restaurata dopo l'incendio del 2019. Costruita tra il 1163 e il 1345, è il cuore simbolico della Francia — il "punto zero" delle distanze stradali francesi è segnato davanti al suo portale. I gargoyle in cima guardano Parigi dall'alto. Visita con calma: dopo cinque anni di cantiere, è tornata più bella che mai.</div>
+      <div class="act-badges">
+        <span class="badge badge-gold"><i class="ti ti-star" aria-hidden="true"></i> Imperdibile</span>
+        <span class="badge badge-blue"><i class="ti ti-building-church" aria-hidden="true"></i> Gotico · 1163</span>
+        <span class="badge badge-green"><i class="ti ti-refresh" aria-hidden="true"></i> Appena restaurata</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="transport-arrow"><i class="ti ti-arrow-down" aria-hidden="true"></i> A piedi · 15 min</div>
+
+  <div class="dinner-card">
+    <i class="ti ti-tools-kitchen-2 dinner-icon" aria-hidden="true"></i>
+    <div class="dinner-body">
+      <div class="dinner-name">Bistrot des Lettres ✦ Prenotazione</div>
+      <div class="dinner-detail">15:20 · Sosta pranzo tardivo · 50 minuti · Rue de Verneuil, 7° arr.</div>
+    </div>
+  </div>
+
+  <div class="transport-arrow" style="margin-top:0.75rem;"><i class="ti ti-arrow-down" aria-hidden="true"></i> Métro linea 10 · 1h 15min</div>
+
+  <div class="activity featured">
+    <div class="act-time">
+      <div class="act-time-hour">18:20</div>
+      <div class="act-time-label">3 ore</div>
+    </div>
+    <div class="act-body">
+      <div class="act-name">Tour Eiffel</div>
+      <div class="act-desc">Costruita in due anni per l'Esposizione del 1889, alta 330 metri, è il monumento più visitato al mondo. Si sale al secondo piano per il tramonto su Parigi — la città si stende ai piedi in tutte le direzioni. Alle 21 scatta lo spettacolo di luci: 20.000 lampadine lampeggiano per 5 minuti ogni ora.</div>
+      <div class="act-badges">
+        <span class="badge badge-gold"><i class="ti ti-star" aria-hidden="true"></i> Tramonto</span>
+        <span class="badge badge-blue"><i class="ti ti-ticket" aria-hidden="true"></i> Prenotare online</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="transport-arrow"><i class="ti ti-arrow-down" aria-hidden="true"></i> Bus 30 · 30 min</div>
+
+  <div class="activity">
+    <div class="act-time">
+      <div class="act-time-hour">18:50</div>
+      <div class="act-time-label">30 min</div>
+    </div>
+    <div class="act-body">
+      <div class="act-name">Arc de Triomphe</div>
+      <div class="act-desc">Il monumento napoleonico al centro della Place Charles de Gaulle, dove si uniscono 12 viali. Vista mozzafiato sugli Champs-Élysées illuminati al tramonto. La salita in cima (285 gradini) regala il panorama più geometrico di Parigi: il perfetto cerchio di boulevard che irradia dalla piazza.</div>
+      <div class="act-badges">
+        <span class="badge badge-gold"><i class="ti ti-photo" aria-hidden="true"></i> Panorama</span>
+        <span class="badge badge-blue"><i class="ti ti-bus" aria-hidden="true"></i> Bus 30</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="transport-arrow"><i class="ti ti-arrow-down" aria-hidden="true"></i> A piedi · 15 min</div>
+
+  <div class="activity">
+    <div class="act-time">
+      <div class="act-time-hour">19:05</div>
+      <div class="act-time-label">Rientro</div>
+    </div>
+    <div class="act-body">
+      <div class="act-name">Rientro a casa</div>
+      <div class="act-desc">Piedi doloranti, memoria card piena, stomaco pronto per la cena. Missione compiuta.</div>
+    </div>
+  </div>
+
+  <div class="dinner-card" style="margin-top:0.75rem;">
+    <i class="ti ti-tools-kitchen-2 dinner-icon" aria-hidden="true"></i>
+    <div class="dinner-body">
+      <div class="dinner-name">Brasserie Bellanger ✦ Prenotazione ore 19:15</div>
+      <div class="dinner-detail">Cena serale · tipica brasserie parigina</div>
+    </div>
+  </div>
+
+</div>
+</div>
