@@ -33,12 +33,9 @@
       padding: 2rem 1rem 4rem;
     }
 
-    .guide {
-      max-width: 700px;
-      margin: 0 auto;
-    }
+    .guide { max-width: 700px; margin: 0 auto; }
 
-    /* COVER */
+    /* ── COVER ── */
     .cover {
       background: linear-gradient(160deg, #0a1628 0%, #1a3a6e 60%, #0d2145 100%);
       padding: 3rem 2.5rem 2.5rem;
@@ -48,87 +45,81 @@
       overflow: hidden;
     }
     .cover::before {
-      content: '';
-      position: absolute;
+      content: ''; position: absolute;
       top: -40px; right: -40px;
       width: 200px; height: 200px;
-      border: 1px solid rgba(212,175,55,0.25);
-      border-radius: 50%;
+      border: 1px solid rgba(212,175,55,0.25); border-radius: 50%;
     }
     .cover::after {
-      content: '';
-      position: absolute;
+      content: ''; position: absolute;
       top: -20px; right: -20px;
       width: 140px; height: 140px;
-      border: 1px solid rgba(212,175,55,0.15);
-      border-radius: 50%;
+      border: 1px solid rgba(212,175,55,0.15); border-radius: 50%;
     }
     .cover-eyebrow {
-      font-size: 11px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: #d4af37;
-      margin-bottom: 0.75rem;
-      font-weight: 700;
+      font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+      color: #d4af37; margin-bottom: 0.75rem; font-weight: 700;
     }
     .cover-title {
       font-family: 'Playfair Display', serif;
-      font-size: 2.8rem;
-      color: #fff;
-      line-height: 1.1;
-      margin-bottom: 0.4rem;
-      font-weight: 600;
+      font-size: 2.8rem; color: #fff; line-height: 1.1;
+      margin-bottom: 0.4rem; font-weight: 600;
     }
     .cover-title em { color: #d4af37; font-style: italic; }
     .cover-sub {
       font-family: 'Playfair Display', serif;
-      font-size: 1.1rem;
-      color: rgba(255,255,255,0.65);
-      font-style: italic;
-      margin-bottom: 2rem;
+      font-size: 1.1rem; color: rgba(255,255,255,0.65);
+      font-style: italic; margin-bottom: 2rem;
     }
     .cover-meta { display: flex; gap: 2rem; flex-wrap: wrap; }
     .cover-meta-item {
-      font-size: 12px;
-      color: rgba(255,255,255,0.5);
-      letter-spacing: 1px;
-      text-transform: uppercase;
+      font-size: 12px; color: rgba(255,255,255,0.5);
+      letter-spacing: 1px; text-transform: uppercase;
     }
     .cover-meta-item strong {
-      display: block;
-      font-size: 14px;
-      color: rgba(255,255,255,0.9);
-      letter-spacing: 0;
-      text-transform: none;
-      font-weight: 400;
-      margin-bottom: 2px;
+      display: block; font-size: 14px; color: rgba(255,255,255,0.9);
+      letter-spacing: 0; text-transform: none; font-weight: 400; margin-bottom: 2px;
     }
 
-    /* CHAPTERS */
+    /* ── CHAPTERS ── */
     .chapter { margin-bottom: 2.5rem; }
     .chapter-header {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1.25rem;
-      padding-bottom: 0.75rem;
+      display: flex; align-items: center; gap: 1rem;
+      margin-bottom: 1.25rem; padding-bottom: 0.75rem;
       border-bottom: 0.5px solid var(--color-border-strong);
     }
     .chapter-num {
       font-family: 'Playfair Display', serif;
-      font-size: 0.9rem;
-      color: var(--color-gold);
-      font-style: italic;
-      min-width: 70px;
+      font-size: 0.9rem; color: var(--color-gold); font-style: italic; min-width: 70px;
     }
     .chapter-title {
       font-family: 'Playfair Display', serif;
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: var(--color-text);
+      font-size: 1.3rem; font-weight: 600; color: var(--color-text);
     }
 
-    /* INFO CARD */
+    /* Chapter title as accordion trigger */
+    .chapter-title-btn {
+      display: flex; align-items: center; justify-content: space-between;
+      flex: 1; background: none; border: none; cursor: pointer;
+      padding: 0; text-align: left; font-family: 'Playfair Display', serif;
+      font-size: 1.3rem; font-weight: 600; color: var(--color-text);
+      transition: color 0.2s;
+    }
+    .chapter-title-btn:hover { color: var(--color-gold); }
+    .chapter-title-btn .chevron {
+      font-size: 20px; color: var(--color-gold);
+      transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); flex-shrink: 0;
+    }
+    .chapter-title-btn[aria-expanded="true"] .chevron { transform: rotate(180deg); }
+
+    /* Chapter collapsible panel */
+    .chapter-panel {
+      overflow: hidden; max-height: 0; opacity: 0;
+      transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1), opacity 0.35s ease;
+    }
+    .chapter-panel.open { max-height: 5000px; opacity: 1; }
+
+    /* ── INFO CARD ── */
     .info-card {
       background: var(--color-surface-2);
       border-radius: var(--radius-lg);
@@ -136,160 +127,136 @@
       margin-bottom: 1rem;
     }
     .info-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.75rem;
-      padding: 0.5rem 0;
+      display: flex; align-items: flex-start; gap: 0.75rem;
+      padding: 0.6rem 0;
       border-bottom: 0.5px solid var(--color-border);
     }
     .info-row:last-child { border-bottom: none; padding-bottom: 0; }
-    .info-icon { color: var(--color-gold); font-size: 16px; margin-top: 2px; flex-shrink: 0; }
+    .info-icon { color: var(--color-gold); font-size: 16px; margin-top: 3px; flex-shrink: 0; }
     .info-label {
-      font-size: 12px;
-      color: var(--color-text-muted);
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      margin-bottom: 2px;
+      font-size: 12px; color: var(--color-text-muted);
+      letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 2px;
     }
     .info-value { font-size: 14px; color: var(--color-text); }
     .info-link { color: var(--color-navy); text-decoration: underline; font-size: 14px; font-style: italic; }
 
-    /* PROGRAM GRID */
+    /* ── INLINE ACCORDION (inside info cards) ── */
+    .acc-trigger {
+      display: flex; align-items: center; justify-content: space-between;
+      width: 100%; background: none; border: none; cursor: pointer;
+      padding: 0.55rem 0; border-top: 0.5px solid var(--color-border);
+      margin-top: 0.6rem; text-align: left;
+      color: var(--color-navy);
+      font-family: 'Lato', sans-serif; font-size: 13px; font-weight: 700;
+      transition: color 0.2s;
+    }
+    .acc-trigger:hover { color: var(--color-gold); }
+    .acc-trigger .acc-label { display: flex; align-items: center; gap: 6px; }
+    .acc-trigger .chevron {
+      font-size: 15px;
+      transition: transform 0.3s cubic-bezier(0.4,0,0.2,1); flex-shrink: 0;
+    }
+    .acc-trigger[aria-expanded="true"] .chevron { transform: rotate(180deg); }
+
+    .acc-panel {
+      overflow: hidden; max-height: 0; opacity: 0;
+      transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1), opacity 0.3s ease;
+    }
+    .acc-panel.open { max-height: 2000px; opacity: 1; }
+    .acc-panel-inner { padding-top: 0.75rem; padding-bottom: 0.1rem; }
+
+    /* ── PROGRAM GRID ── */
     .program-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 0.5rem;
-      margin-top: 0.5rem;
+      display: grid; grid-template-columns: repeat(5,1fr); gap: 0.5rem; margin-top: 0.5rem;
     }
-    @media (max-width: 500px) {
-      .program-grid { grid-template-columns: repeat(3, 1fr); }
-    }
+    @media (max-width: 500px) { .program-grid { grid-template-columns: repeat(3,1fr); } }
     .prog-day {
-      background: var(--color-surface);
-      border: 0.5px solid var(--color-border);
-      border-radius: var(--radius-md);
-      padding: 0.6rem 0.5rem;
-      text-align: center;
+      background: var(--color-surface); border: 0.5px solid var(--color-border);
+      border-radius: var(--radius-md); padding: 0.6rem 0.5rem; text-align: center;
     }
-    .prog-day.highlight {
-      border-color: var(--color-gold);
-      background: rgba(212,175,55,0.08);
-    }
+    .prog-day.highlight { border-color: var(--color-gold); background: rgba(212,175,55,0.08); }
     .prog-day-name {
-      font-size: 11px;
-      color: var(--color-text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 3px;
+      font-size: 11px; color: var(--color-text-muted);
+      text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px;
     }
     .prog-day.highlight .prog-day-name { color: #8a6800; }
     .prog-day-desc { font-size: 12px; color: var(--color-text); font-weight: 500; line-height: 1.3; }
 
-    /* HISTORY TIMELINE */
-    .history-timeline { position: relative; padding-left: 1.5rem; }
+    /* ── PROGRAM DETAIL ROWS ── */
+    .prog-detail { display: flex; flex-direction: column; gap: 0.6rem; }
+    .prog-detail-row { display: flex; gap: 0.75rem; align-items: flex-start; }
+    .prog-detail-row.featured {
+      background: rgba(212,175,55,0.07); border-radius: var(--radius-md); padding: 0.5rem 0.6rem;
+    }
+    .prog-day-tag {
+      min-width: 32px; font-size: 11px; font-weight: 700;
+      color: var(--color-text-muted); text-transform: uppercase; padding-top: 2px;
+    }
+    .prog-day-tag.featured { color: #8a6800; }
+    .prog-day-title { font-size: 14px; font-weight: 600; color: var(--color-text); }
+    .prog-day-sub { font-size: 13px; color: var(--color-text-muted); }
+
+    /* ── HISTORY TIMELINE ── */
+    .history-timeline { position: relative; padding-left: 1.5rem; padding-top: 0.25rem; }
     .history-timeline::before {
-      content: '';
-      position: absolute;
+      content: ''; position: absolute;
       left: 0; top: 0; bottom: 0;
-      width: 1px;
-      background: var(--color-border-strong);
+      width: 1px; background: var(--color-border-strong);
     }
     .h-item { position: relative; margin-bottom: 1.25rem; }
     .h-item::before {
-      content: '';
-      position: absolute;
-      left: -1.6rem; top: 4px;
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: var(--color-gold);
+      content: ''; position: absolute; left: -1.6rem; top: 5px;
+      width: 8px; height: 8px; border-radius: 50%; background: var(--color-gold);
     }
     .h-year { font-size: 12px; font-weight: 700; color: var(--color-gold); letter-spacing: 1px; margin-bottom: 2px; }
     .h-text { font-size: 14px; color: var(--color-text-muted); line-height: 1.6; }
 
-    /* QUARTIERE */
+    /* ── QUARTIERE PROSE ── */
     .quartiere-prose { font-size: 14px; color: var(--color-text-muted); line-height: 1.8; font-style: italic; }
+    .quartiere-prose + .quartiere-prose { margin-top: 0.75rem; }
     .quartiere-prose strong { color: var(--color-text); font-style: normal; }
 
-    /* ACTIVITY */
+    /* ── ACTIVITY ── */
     .activity {
-      background: var(--color-surface);
-      border: 0.5px solid var(--color-border);
-      border-radius: var(--radius-lg);
-      padding: 1rem 1.25rem;
-      margin-bottom: 0.75rem;
-      display: flex;
-      gap: 1rem;
+      background: var(--color-surface); border: 0.5px solid var(--color-border);
+      border-radius: var(--radius-lg); padding: 1rem 1.25rem;
+      margin-bottom: 0.75rem; display: flex; gap: 1rem;
     }
     .activity.featured {
       border-left: 3px solid var(--color-gold);
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
+      border-top-left-radius: 0; border-bottom-left-radius: 0;
     }
     .act-time { text-align: center; min-width: 44px; flex-shrink: 0; }
-    .act-time-hour {
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--color-navy);
-      font-family: 'Playfair Display', serif;
-    }
-    .act-time-label {
-      font-size: 10px;
-      color: var(--color-text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
+    .act-time-hour { font-size: 15px; font-weight: 600; color: var(--color-navy); font-family: 'Playfair Display', serif; }
+    .act-time-label { font-size: 10px; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
     .act-body { flex: 1; min-width: 0; }
-    .act-name {
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--color-text);
-      margin-bottom: 3px;
-      font-family: 'Playfair Display', serif;
-    }
+    .act-name { font-size: 15px; font-weight: 600; color: var(--color-text); margin-bottom: 3px; font-family: 'Playfair Display', serif; }
     .act-desc { font-size: 13px; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 6px; }
     .act-badges { display: flex; flex-wrap: wrap; gap: 5px; }
     .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 11px;
-      padding: 2px 8px;
-      border-radius: 20px;
-      font-weight: 500;
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 500;
     }
     .badge-gold { background: rgba(212,175,55,0.12); color: #7a5f00; }
     .badge-blue { background: rgba(26,58,110,0.10); color: var(--color-navy); }
     .badge-green { background: var(--color-success-bg); color: var(--color-success-text); }
 
-    /* TRANSPORT ARROW */
+    /* ── TRANSPORT ARROW ── */
     .transport-arrow {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      display: flex; align-items: center; gap: 0.5rem;
       padding: 0.35rem 0.5rem 0.35rem 4.5rem;
-      font-size: 12px;
-      color: var(--color-text-muted);
+      font-size: 12px; color: var(--color-text-muted);
     }
     .transport-arrow i { font-size: 14px; color: var(--color-border-strong); }
 
-    /* DINNER CARD */
+    /* ── DINNER CARD ── */
     .dinner-card {
-      background: rgba(26,58,110,0.05);
-      border: 1px solid rgba(26,58,110,0.18);
-      border-radius: var(--radius-lg);
-      padding: 1rem 1.25rem;
-      margin-top: 1rem;
-      display: flex;
-      gap: 1rem;
-      align-items: center;
+      background: rgba(26,58,110,0.05); border: 1px solid rgba(26,58,110,0.18);
+      border-radius: var(--radius-lg); padding: 1rem 1.25rem;
+      margin-top: 1rem; display: flex; gap: 1rem; align-items: center;
     }
     .dinner-icon { font-size: 22px; color: var(--color-navy); }
-    .dinner-name {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--color-text);
-      font-family: 'Playfair Display', serif;
-    }
+    .dinner-name { font-size: 14px; font-weight: 600; color: var(--color-text); font-family: 'Playfair Display', serif; }
     .dinner-detail { font-size: 12px; color: var(--color-text-muted); margin-top: 2px; }
 
     @media (max-width: 600px) {
@@ -301,6 +268,7 @@
 <body>
 <div class="guide">
 
+  <!-- COVER -->
   <div class="cover">
     <div class="cover-eyebrow">Guida di viaggio · Maggio 2026</div>
     <div class="cover-title">Giornata<br><em>matta matta</em><br>a Parigi</div>
@@ -312,21 +280,37 @@
     </div>
   </div>
 
-  <!-- CAP 1 -->
+  <!-- ══════════════ CAP 1 ══════════════ -->
   <div class="chapter">
     <div class="chapter-header">
       <span class="chapter-num">Cap. I</span>
       <span class="chapter-title">Informazioni generali</span>
     </div>
     <div class="info-card">
+
+      <!-- Alloggio sempre visibile + accordion quartiere -->
       <div class="info-row">
         <i class="ti ti-home info-icon"></i>
-        <div>
+        <div style="flex:1; min-width:0;">
           <div class="info-label">Alloggio</div>
           <div class="info-value">66 Rue Marguerite de Rochechouart, Parigi 9°</div>
-          <a class="info-link" href="#">→https://maps.app.goo.gl/QEkmdqzN5pjY5FfUA</a>
+          <a class="info-link" href="#">→ https://maps.app.goo.gl/QEkmdqzN5pjY5FfUA</a>
+
+          <button class="acc-trigger" id="btn-quartiere" aria-expanded="false" aria-controls="panel-quartiere">
+            <span class="acc-label"><i class="ti ti-building-community" aria-hidden="true"></i> Info sul quartiere</span>
+            <i class="ti ti-chevron-down chevron" aria-hidden="true"></i>
+          </button>
+          <div class="acc-panel" id="panel-quartiere" role="region" aria-labelledby="btn-quartiere">
+            <div class="acc-panel-inner">
+              <p class="quartiere-prose">Siete nel <strong>9° arrondissement</strong>, a due passi dal confine con Montmartre — uno dei quartieri più vivi e autentici di Parigi. La vostra strada, <strong>Rue Marguerite de Rochechouart</strong>, è un asse pedonale ricco di vita: caffè, vinerie, mercatini e negozietti indie costellano ogni isolato.</p>
+              <p class="quartiere-prose">A pochi minuti a piedi trovate la <strong>metro Anvers</strong> (linea 2). Alzando gli occhi a nord vedete già il <strong>Sacré-Cœur</strong> in cima alla collina. A ovest, il Pigalle con il leggendario <strong>Moulin Rouge</strong>. A est, i bistrot della <strong>Nouvelle Athènes</strong>, il quartiere dei pittori ottocenteschi.</p>
+              <p class="quartiere-prose">Il clima è quello di un quartiere vissuto dai parigini veri: né troppo turistico, né periferico. Perfetto per perdersi la mattina con un croissant in mano.</p>
+            </div>
+          </div>
         </div>
       </div>
+
+      <!-- Maps sempre visibile -->
       <div class="info-row">
         <i class="ti ti-map-pin info-icon"></i>
         <div>
@@ -334,82 +318,81 @@
           <a class="info-link" href="#">→ https://maps.app.goo.gl/sCyc8MakvHi6yKUN8</a>
         </div>
       </div>
+
+      <!-- Programma: griglia sempre visibile + accordion dettaglio -->
       <div class="info-row">
-        <i class="ti ti-calendar info-icon"></i>
-        <div>
+        <i class="ti ti-calendar info-icon" style="margin-top:14px;"></i>
+        <div style="flex:1; min-width:0;">
           <div class="info-label">Programma della settimana</div>
           <div class="program-grid">
             <div class="prog-day"><div class="prog-day-name">Mer</div><div class="prog-day-desc">Arrivo</div></div>
             <div class="prog-day highlight"><div class="prog-day-name">Gio</div><div class="prog-day-desc">Turisti con Robi</div></div>
             <div class="prog-day"><div class="prog-day-name">Ven</div><div class="prog-day-desc">Compl. Luca 🎂</div></div>
-            <div class="prog-day"><div class="prog-day-name">Sab</div><div class="prog-day-desc">In giro con amici</div></div>
+            <div class="prog-day"><div class="prog-day-name">Sab</div><div class="prog-day-desc">Con gli amici</div></div>
             <div class="prog-day"><div class="prog-day-name">Dom</div><div class="prog-day-desc">Ripartenza</div></div>
+          </div>
+
+          <button class="acc-trigger" id="btn-programma" aria-expanded="false" aria-controls="panel-programma">
+            <span class="acc-label"><i class="ti ti-list-details" aria-hidden="true"></i> Dettaglio giornate</span>
+            <i class="ti ti-chevron-down chevron" aria-hidden="true"></i>
+          </button>
+          <div class="acc-panel" id="panel-programma" role="region" aria-labelledby="btn-programma">
+            <div class="acc-panel-inner">
+              <div class="prog-detail">
+                <div class="prog-detail-row">
+                  <span class="prog-day-tag">Mer</span>
+                  <div><div class="prog-day-title">Arrivo a Parigi</div><div class="prog-day-sub">Check-in, primo giro del quartiere, aperitivo di benvenuto. Niente programma — solo respirare l'aria di Parigi.</div></div>
+                </div>
+                <div class="prog-detail-row featured">
+                  <span class="prog-day-tag featured">Gio</span>
+                  <div><div class="prog-day-title">Turisti con Robi ✦ (vedi Cap. IV)</div><div class="prog-day-sub">Galeries Lafayette, Opéra, Galerie Vivienne, Palais-Royal, Sainte-Chapelle, Notre-Dame, Tour Eiffel, Arc de Triomphe.</div></div>
+                </div>
+                <div class="prog-detail-row">
+                  <span class="prog-day-tag">Ven</span>
+                  <div><div class="prog-day-title">Compleanno di Luca 🎂</div><div class="prog-day-sub">Programma da definire insieme a Luca. Cena speciale in programma.</div></div>
+                </div>
+                <div class="prog-detail-row">
+                  <span class="prog-day-tag">Sab</span>
+                  <div><div class="prog-day-title">In giro con gli amici</div><div class="prog-day-sub">Esplorazione libera. Montmartre, mercatini, Seine o dove porta la giornata.</div></div>
+                </div>
+                <div class="prog-detail-row">
+                  <span class="prog-day-tag">Dom</span>
+                  <div><div class="prog-day-title">Ripartenza</div><div class="prog-day-sub">Check-out, ultimo café au lait, bagagli e aeroporto. À bientôt, Parigi.</div></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 
-  <!-- CAP 2 -->
+  <!-- ══════════════ CAP 2 ══════════════ -->
   <div class="chapter">
     <div class="chapter-header">
       <span class="chapter-num">Cap. II</span>
-      <span class="chapter-title">Gli ultimi 200 anni di Parigi in pillole</span>
+      <button class="chapter-title-btn" id="btn-storia" aria-expanded="false" aria-controls="panel-storia">
+        Gli ultimi 200 anni di Parigi in pillole
+        <i class="ti ti-chevron-down chevron" aria-hidden="true"></i>
+      </button>
     </div>
-    <div class="history-timeline">
-      <div class="h-item">
-        <div class="h-year">1804–1815</div>
-        <div class="h-text">Napoleone I incoronato imperatore a Notre-Dame. Parigi diventa capitale culturale e militare d'Europa. L'Arco di Trionfo viene commissionato nel 1806.</div>
-      </div>
-      <div class="h-item">
-        <div class="h-year">1853–1870</div>
-        <div class="h-text">Il Barone Haussmann, su incarico di Napoleone III, demolisce e rifà metà della città: nascono i grandi boulevard, il sistema fognario moderno, le piazze stellate. La Parigi che conoscete oggi è sua.</div>
-      </div>
-      <div class="h-item">
-        <div class="h-year">1889</div>
-        <div class="h-text">Inaugurata la Tour Eiffel per l'Esposizione Universale. I parigini la odiano. Poi ci si affezionano.</div>
-      </div>
-      <div class="h-item">
-        <div class="h-year">1871–1914 · Belle Époque</div>
-        <div class="h-text">Parigi è la capitale del mondo: Moulin Rouge, Impressionismo, Art Nouveau, cabarets. Monet, Degas, Toulouse-Lautrec. La vita è bella.</div>
-      </div>
-      <div class="h-item">
-        <div class="h-year">Anni '20 · Les Années Folles</div>
-        <div class="h-text">Hemingway, Fitzgerald, Picasso e Gertrude Stein si ritrovano a Saint-Germain. Jazz nei sotterranei, champagne ovunque. Parigi è la città degli espatriati americani e degli artisti bohémien.</div>
-      </div>
-      <div class="h-item">
-        <div class="h-year">1940–1944 · Occupazione</div>
-        <div class="h-text">I nazisti occupano Parigi. La città viene risparmiata dalla distruzione. La Liberazione arriva nell'agosto 1944 tra bagni di folla sugli Champs-Élysées.</div>
-      </div>
-      <div class="h-item">
-        <div class="h-year">1968 · Maggio</div>
-        <div class="h-text">Studenti e operai paralizzano la città per settimane. Le barricate del Quartiere Latino entrano nella storia. De Gaulle vacilla ma regge.</div>
-      </div>
-      <div class="h-item">
-        <div class="h-year">1977–1989 · Grands Travaux</div>
-        <div class="h-text">Il Centre Pompidou (1977) scandalizza con le tubature a vista. La Piramide del Louvre di I.M. Pei (1989) divide i parigini. Entrambi diventano icone.</div>
-      </div>
-      <div class="h-item">
-        <div class="h-year">2019–2024 · Notre-Dame</div>
-        <div class="h-text">Un incendio devasta la cattedrale. Il mondo si ferma. Cinque anni di restauro: nel 2024, Notre-Dame riapre più splendente di prima.</div>
+    <div class="chapter-panel" id="panel-storia" role="region" aria-labelledby="btn-storia">
+      <div class="history-timeline">
+        <div class="h-item"><div class="h-year">1804–1815</div><div class="h-text">Napoleone I incoronato imperatore a Notre-Dame. Parigi diventa capitale culturale e militare d'Europa. L'Arco di Trionfo viene commissionato nel 1806.</div></div>
+        <div class="h-item"><div class="h-year">1853–1870</div><div class="h-text">Il Barone Haussmann, su incarico di Napoleone III, demolisce e rifà metà della città: nascono i grandi boulevard, il sistema fognario moderno, le piazze stellate. La Parigi che conoscete oggi è sua.</div></div>
+        <div class="h-item"><div class="h-year">1889</div><div class="h-text">Inaugurata la Tour Eiffel per l'Esposizione Universale. I parigini la odiano. Poi ci si affezionano.</div></div>
+        <div class="h-item"><div class="h-year">1871–1914 · Belle Époque</div><div class="h-text">Parigi è la capitale del mondo: Moulin Rouge, Impressionismo, Art Nouveau, cabarets. Monet, Degas, Toulouse-Lautrec. La vita è bella.</div></div>
+        <div class="h-item"><div class="h-year">Anni '20 · Les Années Folles</div><div class="h-text">Hemingway, Fitzgerald, Picasso e Gertrude Stein si ritrovano a Saint-Germain. Jazz nei sotterranei, champagne ovunque.</div></div>
+        <div class="h-item"><div class="h-year">1940–1944 · Occupazione</div><div class="h-text">I nazisti occupano Parigi. La città viene risparmiata dalla distruzione. La Liberazione arriva nell'agosto 1944 tra bagni di folla sugli Champs-Élysées.</div></div>
+        <div class="h-item"><div class="h-year">1968 · Maggio</div><div class="h-text">Studenti e operai paralizzano la città per settimane. Le barricate del Quartiere Latino entrano nella storia. De Gaulle vacilla ma regge.</div></div>
+        <div class="h-item"><div class="h-year">1977–1989 · Grands Travaux</div><div class="h-text">Il Centre Pompidou (1977) scandalizza con le tubature a vista. La Piramide del Louvre di I.M. Pei (1989) divide i parigini. Entrambi diventano icone.</div></div>
+        <div class="h-item"><div class="h-year">2019–2024 · Notre-Dame</div><div class="h-text">Un incendio devasta la cattedrale. Il mondo si ferma. Cinque anni di restauro: nel 2024, Notre-Dame riapre più splendente di prima.</div></div>
       </div>
     </div>
   </div>
 
-  <!-- CAP 3 -->
-  <div class="chapter">
-    <div class="chapter-header">
-      <span class="chapter-num">Cap. III</span>
-      <span class="chapter-title">Il vostro quartiere</span>
-    </div>
-    <div class="info-card">
-      <p class="quartiere-prose">Siete nel <strong>9° arrondissement</strong>, a due passi dal confine con Montmartre — uno dei quartieri più vivi e autentici di Parigi. La vostra strada, <strong>Rue Marguerite de Rochechouart</strong>, è un asse pedonale ricco di vita: caffè, vinerie, mercatini e negozietti indie costellano ogni isolato.</p>
-      <p class="quartiere-prose" style="margin-top:0.75rem;">A pochi minuti a piedi trovate la <strong>metro Anvers</strong> (linea 2). Alzando gli occhi a nord vedete già il <strong>Sacré-Cœur</strong> in cima alla collina. A ovest, il Pigalle con il leggendario <strong>Moulin Rouge</strong>. A est, i bistrot della <strong>Nouvelle Athènes</strong>, quartiere dei pittori ottocenteschi.</p>
-      <p class="quartiere-prose" style="margin-top:0.75rem;">Il clima è quello di un quartiere vissuto dai parigini veri: né troppo turistico, né periferico. Perfetto per perdersi la mattina con un croissant in mano.</p>
-    </div>
-  </div>
-
-  <!-- CAP 4 -->
+  <!-- ══════════════ CAP 4 ══════════════ -->
   <div class="chapter">
     <div class="chapter-header">
       <span class="chapter-num">Cap. IV</span>
@@ -500,7 +483,7 @@
       <div class="act-time"><div class="act-time-hour">14:30</div><div class="act-time-label">1h 30min</div></div>
       <div class="act-body">
         <div class="act-name">Notre-Dame de Paris</div>
-        <div class="act-desc">La cattedrale gotica più celebre del mondo, appena restaurata dopo l'incendio del 2019. Costruita tra il 1163 e il 1345, è il cuore simbolico della Francia. I gargoyle in cima guardano Parigi dall'alto. Dopo cinque anni di cantiere, è tornata più bella che mai.</div>
+        <div class="act-desc">La cattedrale gotica più celebre del mondo, appena restaurata dopo l'incendio del 2019. Costruita tra il 1163 e il 1345, è il cuore simbolico della Francia. I gargoyle in cima guardano Parigi dall'alto.</div>
         <div class="act-badges">
           <span class="badge badge-gold"><i class="ti ti-star"></i> Imperdibile</span>
           <span class="badge badge-blue"><i class="ti ti-building-church"></i> Gotico · 1163</span>
@@ -568,5 +551,19 @@
   </div><!-- fine cap 4 -->
 
 </div><!-- fine guide -->
+
+<script>
+  document.querySelectorAll('[aria-controls]').forEach(btn => {
+    const panelId = btn.getAttribute('aria-controls');
+    const panel = document.getElementById(panelId);
+    if (!panel) return;
+
+    btn.addEventListener('click', () => {
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!isOpen));
+      panel.classList.toggle('open', !isOpen);
+    });
+  });
+</script>
 </body>
 </html>
